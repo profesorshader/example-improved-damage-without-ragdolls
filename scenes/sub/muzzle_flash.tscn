@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c0v2afk8kuy2q"]
+
+[ext_resource type="Script" uid="uid://su2v4hthgwc7" path="res://scripts/muzzle_flash.gd" id="1_kwlyv"]
+[ext_resource type="Material" uid="uid://0eh65wmpubba" path="res://materials/muzzle_flash.tres" id="2_gk6a7"]
+[ext_resource type="Material" uid="uid://j51rtl0l3w2m" path="res://materials_psys/muzzle_flash.tres" id="3_0rbdw"]
+[ext_resource type="ArrayMesh" uid="uid://slttfmo6k7o7" path="res://models/muzzle_flash.obj" id="4_pu5f2"]
+[ext_resource type="Material" uid="uid://dc18f8cuuwcut" path="res://materials/muzzle_circle.tres" id="5_r00md"]
+[ext_resource type="Material" uid="uid://csfofquocyodk" path="res://materials_psys/muzzle_circle.tres" id="6_xqq2g"]
+[ext_resource type="Material" uid="uid://0uwga302kty6" path="res://materials/muzzle_sparks.tres" id="7_pu5f2"]
+[ext_resource type="Material" uid="uid://de03ipsffvgeb" path="res://materials_psys/muzzle_sparks.tres" id="8_r00md"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6tn53"]
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xqq2g"]
+size = Vector2(0.2, 1)
+
+[node name="MuzzleFlash" type="Node3D" unique_id=971083770]
+script = ExtResource("1_kwlyv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1082712683]
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="." unique_id=1324845193]
+material_override = ExtResource("2_gk6a7")
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+process_material = ExtResource("3_0rbdw")
+draw_pass_1 = ExtResource("4_pu5f2")
+
+[node name="MuzzleCircle" type="GPUParticles3D" parent="." unique_id=1931470454]
+material_override = ExtResource("5_r00md")
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+process_material = ExtResource("6_xqq2g")
+draw_pass_1 = SubResource("QuadMesh_6tn53")
+
+[node name="MuzzleSparks" type="GPUParticles3D" parent="." unique_id=261866221]
+material_override = ExtResource("7_pu5f2")
+emitting = false
+amount = 20
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+process_material = ExtResource("8_r00md")
+draw_pass_1 = SubResource("QuadMesh_xqq2g")

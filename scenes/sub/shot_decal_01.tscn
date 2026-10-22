@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b7vljyirhenik"]
+
+[ext_resource type="Texture2D" uid="uid://b84hs6wioaxct" path="res://textures/decal_albedo.png" id="1_j7m0m"]
+[ext_resource type="Texture2D" uid="uid://dmxxhq3oad7iq" path="res://textures/decal_normal.png" id="2_hja1i"]
+[ext_resource type="Texture2D" uid="uid://b4j22ggcg5ytu" path="res://textures/decal_orm.png" id="3_8jufm"]
+[ext_resource type="Script" uid="uid://dw8neh8ig0ty8" path="res://scripts/shot_decal_01.gd" id="4_hja1i"]
+
+[node name="ShootDecal01" type="Decal" unique_id=126473698]
+size = Vector3(0.25, 0.01, 0.25)
+texture_albedo = ExtResource("1_j7m0m")
+texture_normal = ExtResource("2_hja1i")
+texture_orm = ExtResource("3_8jufm")
+script = ExtResource("4_hja1i")

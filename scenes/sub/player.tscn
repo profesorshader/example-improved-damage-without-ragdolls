@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cs653bfl3ppxw"]
+
+[ext_resource type="Script" uid="uid://yxp852fgficl" path="res://scripts/player.gd" id="1_ghc06"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_06iad"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ghc06"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.2
+
+[node name="Player" type="CharacterBody3D" unique_id=1332900970]
+script = ExtResource("1_ghc06")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1648185075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_06iad")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=866173744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 60.0
+near = 0.01
+far = 200.0
+
+[node name="Weapon" type="MeshInstance3D" parent="Camera3D" unique_id=1543541209]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.3, -0.9)
+mesh = SubResource("CylinderMesh_ghc06")
+
+[node name="MuzzleFlashPoint" type="Marker3D" parent="Camera3D/Weapon" unique_id=1478960350]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.099999964, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=710137946]
+bus = &"Reverb"

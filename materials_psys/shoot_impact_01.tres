@@ -1,0 +1,19 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://df81mcjmhy2ju"]
+
+[sub_resource type="Curve" id="Curve_sljg6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wx3if"]
+curve = SubResource("Curve_sljg6")
+
+[resource]
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 25.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+scale_min = 0.099999994
+scale_max = 0.19999999
+color = Color(1.353256, 1.0026329, 0, 1)
+alpha_curve = SubResource("CurveTexture_wx3if")

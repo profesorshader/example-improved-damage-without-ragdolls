@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dlw3qy13b462w"]
+
+[ext_resource type="Script" uid="uid://bpwyxlrg42y72" path="res://scripts/shot_impact_01.gd" id="1_r0v2p"]
+[ext_resource type="Material" uid="uid://c7tegg5ey3p6g" path="res://materials/shot_impact_01.tres" id="2_lagnr"]
+[ext_resource type="Material" uid="uid://df81mcjmhy2ju" path="res://materials_psys/shoot_impact_01.tres" id="3_4khhd"]
+[ext_resource type="Material" uid="uid://dc18f8cuuwcut" path="res://materials/muzzle_circle.tres" id="4_53su5"]
+[ext_resource type="Material" uid="uid://csfofquocyodk" path="res://materials_psys/muzzle_circle.tres" id="5_iyapp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_knilm"]
+size = Vector2(0.2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1vjed"]
+size = Vector2(0.3, 0.3)
+
+[node name="ShootImpact01" type="Node3D" unique_id=1388098230]
+script = ExtResource("1_r0v2p")
+
+[node name="ImpactSparks" type="GPUParticles3D" parent="." unique_id=324628625]
+material_override = ExtResource("2_lagnr")
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+process_material = ExtResource("3_4khhd")
+draw_pass_1 = SubResource("QuadMesh_knilm")
+
+[node name="ImpactCircle" type="GPUParticles3D" parent="." unique_id=1740663544]
+material_override = ExtResource("4_53su5")
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+process_material = ExtResource("5_iyapp")
+draw_pass_1 = SubResource("QuadMesh_1vjed")

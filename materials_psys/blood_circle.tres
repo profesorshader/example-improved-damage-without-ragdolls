@@ -1,0 +1,16 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://darlf1u40b5i6"]
+
+[sub_resource type="Curve" id="Curve_4wkow"]
+_data = [Vector2(0, 0), 0.0, 3.1085153, 0, 0, Vector2(1, 1), -0.07945469, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ss8rw"]
+curve = SubResource("Curve_4wkow")
+
+[resource]
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ss8rw")

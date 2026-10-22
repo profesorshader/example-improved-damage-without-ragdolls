@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://88tibejbrv12"]
+
+[ext_resource type="Script" uid="uid://kv35102u8dpy" path="res://scripts/blood_spray_01.gd" id="1_uq53l"]
+[ext_resource type="ArrayMesh" uid="uid://b8ul2h36p0kxw" path="res://models/blood_cone.obj" id="3_6phm2"]
+[ext_resource type="Material" uid="uid://bt3tfp2i54s36" path="res://materials/blood_spray_01.tres" id="4_6phm2"]
+[ext_resource type="Material" uid="uid://3pfm8vatpsnx" path="res://materials_psys/blood_spray_01.tres" id="4_uq53l"]
+[ext_resource type="Material" uid="uid://pp3tmyo3f6p5" path="res://materials/blood_circle_01.tres" id="5_7twsp"]
+[ext_resource type="Material" uid="uid://darlf1u40b5i6" path="res://materials_psys/blood_circle.tres" id="6_2drt8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wddip"]
+
+[node name="BloodImpact01" type="Node3D" unique_id=1448625440]
+script = ExtResource("1_uq53l")
+
+[node name="BloodCone01" type="GPUParticles3D" parent="." unique_id=967438012]
+material_override = ExtResource("4_6phm2")
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+process_material = ExtResource("4_uq53l")
+draw_pass_1 = ExtResource("3_6phm2")
+
+[node name="BloodCircle01" type="GPUParticles3D" parent="." unique_id=2036443658]
+material_override = ExtResource("5_7twsp")
+emitting = false
+amount = 3
+lifetime = 0.12
+one_shot = true
+explosiveness = 0.65
+process_material = ExtResource("6_2drt8")
+draw_pass_1 = SubResource("QuadMesh_wddip")
