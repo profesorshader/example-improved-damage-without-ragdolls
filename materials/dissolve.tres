@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dg3o6ot6h60i7"]
+
+[ext_resource type="Shader" uid="uid://dyegmkdx2xiwn" path="res://shaders/spatial/dissolve.gdshader" id="1_13uwk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_13uwk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wjd28"]
+noise = SubResource("FastNoiseLite_13uwk")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_13uwk")
+shader_parameter/t = 0.0
+shader_parameter/color_base = Color(1, 1, 1, 1)
+shader_parameter/color_edge = Color(1, 0, 0, 1)
+shader_parameter/edge_size = 0.025
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_wjd28")
+shader_parameter/noise_scale = 1.0
+shader_parameter/axis = Vector3(0, 0, -1)

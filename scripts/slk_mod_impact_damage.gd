@@ -6,7 +6,7 @@ enum AxisOption { X, Y, Z, ZERO, NEG_X, NEG_Y, NEG_Z }
 
 @export var enabled : bool = true
 
-@export var initial_rotation : float = 30.0 # in degrees
+@export var max_rotation : float = 30.0 # in degrees
 
 # all bones ara optional
 @export var bone_name_a : String = "Head"
@@ -36,6 +36,11 @@ var current_angle : float = 0.0 # radians
 var impact_speed : float = 50.0
 var recover_speed : float = 5.0
 var impact_axis : Vector3 = Vector3(1.0, 0.0, 0.0)
+
+var is_paused : bool = false
+
+func pause():
+	is_paused = true
 
 func enable_skeleton_modifier():
 	active = enabled
@@ -75,6 +80,10 @@ func _process_modification() -> void:
 		disable_skeleton_modifier()
 		return	
 		
+	# is paused?
+	if is_paused:
+		return
+		
 	# change bones rotations
 	var src_rot : Quaternion
 	var rot : Quaternion
@@ -99,6 +108,11 @@ func _process_modification() -> void:
 		skeleton.set_bone_pose_rotation(bone_idx_d, src_rot * rot)			
 
 func _process(delta):
+	# is paused?
+	if is_paused:
+		return
+			
+	# animate!
 	match anim_mode:
 		# animate impact
 		AnimMode.IMPACT:
@@ -131,6 +145,6 @@ func do_impact(dir: Vector3):
 		return 
 		
 	# apply initial rotation 
-	desired_angle = deg_to_rad(initial_rotation)
+	desired_angle = deg_to_rad(max_rotation)
 	anim_mode = AnimMode.IMPACT
 	enable_skeleton_modifier()
